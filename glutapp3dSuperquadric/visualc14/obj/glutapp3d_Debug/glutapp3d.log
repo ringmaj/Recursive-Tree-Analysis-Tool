@@ -1,0 +1,10 @@
+﻿  recursive_tree.cpp
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\recursive_tree.cpp(22): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\recursive_tree.cpp(23): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\recursive_tree.cpp(49): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\recursive_tree.cpp(87): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\recursive_tree.cpp(94): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\recursive_tree.cpp(115): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\recursive_tree.cpp(156): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  glutapp3d.vcxproj -> C:\Users\majok\OneDrive\Documents\Personal Projects\Recursive\glutapp3dSuperquadric\visualc14\obj\glutapp3d_Debug\glutapp3d.exe
+  glutapp3d.vcxproj -> obj\glutapp3d_Debug\glutapp3d.pdb (Full PDB)
