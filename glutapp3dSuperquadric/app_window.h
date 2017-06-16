@@ -10,25 +10,16 @@
 # include "glut_window.h"
 # include "so_axis.h"
 # include "so_poly.h"
-# include "so_curve.h"
-# include "curve_eval.h"
 # include "gsim/gs_light.h"
-# include "so_graph.h"
 # include "so_clock.h"
-
 # include "deck.h"
-# include "base_plate.h"
-#include "axle.h"
-# include "wheel.h"
-# include "rail.h"
-
-
 
 # include "interface.h"
 # include "lines.h"
 # include "recursive_tree.h"
 # include "buttons.h"
 # include "scrollBox.h"
+
 // The functionality of your application should be implemented inside AppWindow
 class AppWindow : public GlutWindow
 {
@@ -68,22 +59,10 @@ private:
 	SoPoly _poly3;
 	SoPoly _poly4;
 
-	Curve _curve1;
-	Curve _curve2;
-	Curve _curve3;
-	Curve _curve4;
-
-	SoGraph _graphs;
-
-	Deck _deck;
-	BasePlate _baseplate;
-	Axle _axleBack;
-	Axle _axleFront;
-	Wheel _frontWheel;
-	Rail _rail;
-
 	
 
+	Deck _deck;
+	
 	GsLight _light;
 
 
@@ -101,6 +80,7 @@ private:
 	GsMat _spr;               // final scene projection _spr=_cam*_proj
 
 	float _pickprec;
+	float t;
 	bool _viewaxis;
 	bool _oktodrag;
 	int _w, _h;
@@ -108,30 +88,6 @@ private:
 	int depth;
 	int recursion;
 
-	//	For bezier, controls difference between t in interpolating points
-	float interpDiff;
-
-
-	// Select curve, 0 = none, 1 = Lagrange, 2 = Bezier
-	int curve;
-
-	bool realTimeUpdate;
-	bool regenerate;
-	bool displayGraphs;
-	bool viewTrickMode;
-	bool addedPoints;
-
-	float xRotation;
-	float yRotation;
-	float zRotation;
-
-	float yPos;
-	float xPos;
-	float zPos;
-
-	float t;
-
-	int nfaces;
 
 	bool vertScroll;
 public:

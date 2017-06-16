@@ -45,28 +45,7 @@ AppWindow::AppWindow(const char* label, int x, int y, int w, int h)
 	_up.set(0, 1, 0);
 	_aspect = 1.0f; _znear = 0.1f; _zfar = 50.0f;
 
-	interpDiff = 0.05;
-	curve = 2;
-
-	realTimeUpdate = false;
-	regenerate = false;
-	displayGraphs = true;
-	viewTrickMode = true;
-	addedPoints = false;
-
-
-	xRotation = 0.0;
-	yRotation = 0.0;
-	zRotation = 0.0;
-		
-	xPos = 0.0;
-	yPos = 0.0;
-	zPos = 0.0;
-
-	t = 0.0;
-
-	nfaces = 16;
-
+	
 	depth = 0;
 	recursion = 2;
 	vertScroll = false;
@@ -130,14 +109,6 @@ void AppWindow::initPrograms()
 	_poly4.init(GsColor::darkblue, pt1, pt2, pt3, GsColor::darkred);
 
 
-
-
-	_curve1.init();
-	_curve2.init();
-	_curve3.init();
-	_curve4.init();
-
-	_graphs.init();
 	_clock.init();
 
 	_deck.init();
@@ -148,7 +119,6 @@ void AppWindow::initPrograms()
 
 	// Build some of my scene objects:
 	_axis.build(1.0f); // axis has radius 1.0
-	_graphs.build();
 	_clock.build(t);
 	_buttonsInput.build();
 	
@@ -166,17 +136,8 @@ GsVec2 AppWindow::windowToScene(const GsVec2& v)
 	GsVec2 out = GsVec2((2.0f*(v.x / float(_w))) - 1.0f,
 		1.0f - (2.0f*(v.y / float(_h))));
 
-	std::cout << "x: " << out.x << " \t   y: " << out.y << std::endl;
+	//std::cout << "x: " << out.x << " \t   y: " << out.y << std::endl;
 
-	// moving vertical scrollbar
-	//if (out.x >= 0.005 && out.x <= 0.045 && out.y <= (_buttonsInput.getVertScrollY() + 0.15) && out.y >= (_buttonsInput.getVertScrollY() - 0.15))
-	//{
-	//	std::cout << "HIT" << std::endl;
-	//	_buttonsInput.setVertScrollY(out.y);
-	//	redraw();
-
-	//}
-		
 
 
 
@@ -190,78 +151,12 @@ void AppWindow::glutKeyboard(unsigned char key, int x, int y)
 {
 	switch (key)
 	{
-	//case ' ': _viewaxis = !_viewaxis; redraw(); break;
-
-	case 127: // Del pressed
-		if (_poly1.selection() >= 0) // there is a selection
-		{
-			_poly1.del(_poly1.selection());
-			redraw();
-		} 
-
-
-		if (_poly2.selection() >= 0) // there is a selection
-		{
-			_poly2.del(_poly2.selection());
-			redraw();
-		}
-		
-		
-		
-		break;
-
-	case 27: // Esc was pressed
-		if (_poly1.selection() >= 0) // there is a selection
-		{
-			_poly1.select(-1, _pickprec);
-			redraw();
-			break;
-		}
-	
-		if (_poly2.selection() >= 0) // there is a selection
-		{
-			_poly2.select(-1, _pickprec);
-			redraw();
-			break;
-		}
-
-		if (_poly3.selection() >= 0) // there is a selection
-		{
-			_poly3.select(-1, _pickprec);
-			redraw();
-			break;
-		}
-
-		if (_poly4.selection() >= 0) // there is a selection
-		{
-			_poly4.select(-1, _pickprec);
-			redraw();
-			break;
-		}
-
-		 exit(1);
-		break;
-
-	case '0': curve = 0;   redraw(); break;
-	case '1': curve = 1; std::cout << "Lagrange Curve ";   redraw(); break;
-	case '2': curve = 2; std::cout << "Bezier Curve " << std::endl;   redraw(); break;
-	case '3': curve = 3; std::cout << "Quadratic B-Spline " << std::endl;   redraw(); break;
-	case '4': curve = 4; std::cout << "Catmull-Rom Spline " << std::endl;   redraw(); break;
-	case '5': curve = 5; std::cout << "Bessel-Overhauser Spline " << std::endl;   redraw(); break;
-
+	// Increase/decrease branch width
 	case 'a': _recursiveTree.setBranchWidth(_recursiveTree.getBranchWidth() - 0.1); std::cout << "Branch Width:  " << _recursiveTree.getBranchWidth() << std::endl;  redraw(); break;
 	case 'q': _recursiveTree.setBranchWidth(_recursiveTree.getBranchWidth() + 0.1); std::cout << "Branch Width:  " << _recursiveTree.getBranchWidth() << std::endl;  redraw(); break;
 
 
-
-	case 'z': regenerate = true; std::cout << "Regenerating" << std::endl;   redraw(); break;
-	case 'x': realTimeUpdate = !realTimeUpdate; std::cout << "Real-Time update = " << realTimeUpdate << std::endl;   redraw(); break;
-
-
-	case ' ': if (t > 1.0) t = 0.0; t = t + 0.02; redraw(); _buttonsInput.setVertScrollY(0.0);  std::cout << "newy: " << _buttonsInput.getVertScrollY() << std::endl; break;
-
-	case 'n': nfaces++; redraw();  break;
-	case 'r': viewTrickMode = !viewTrickMode; redraw();  break;
+	case ' ': _buttonsInput.setVertScrollY(0.0); redraw();  break;
 	}
 }
 
@@ -393,7 +288,6 @@ void AppWindow::glutMouse(int button, int state, int x, int y)
 
 void AppWindow::glutMotion(int x, int y)
 {
-	//std::cout<<"Motion"<<std::endl;
 
 	GsVec m = rayXYintercept(GsVec2(x, y));
 
@@ -427,20 +321,9 @@ void AppWindow::glutMotion(int x, int y)
 
 	}
 
-	if (!_oktodrag) { return; }
+
+
 	
-
-	//std::cout << "x: " << m.x << "\t y: " << m.y << std::endl;
-
-
-
-
-
-	//std::cout << "m:  x: " << m.x << "      y:  " << m.y << std::endl;
-	if (_poly1.selection() >= 0) { _poly1.move(_poly1.selection(), m); redraw(); }
-	if (_poly2.selection() >= 0) { _poly2.move(_poly2.selection(), m); redraw(); }
-	if (_poly3.selection() >= 0) { _poly3.move(_poly3.selection(), m); redraw(); }
-	if (_poly4.selection() >= 0) { _poly4.move(_poly4.selection(), m); redraw(); }
 }
 
 void AppWindow::glutMenu(int m)
@@ -461,20 +344,6 @@ void AppWindow::drawMenus()
 //;
 
 	glUseProgram(0);
-
-	//glDisable(GL_TEXTURE_2D);
-	//glColor3fv((float*)&GsColor::white);
-	////glColor3f(0.5, 1.0, 1.0);
-	//glLoadIdentity();
-	//glColor3f(1.0f, 1.0f, 1.0f);
-	//glRasterPos2i(0.19, 0.85);
-	//string output = "Depth";
-	////glutBitmapString(GLUT_BITMAP_HELVETICA_12, (const unsigned char*)output.c_str());
-
-
-	////glutBitmapString(GLUT_BITMAP_HELVETICA_12, (const unsigned char*)'c');
-	//glEnable(GL_TEXTURE_2D);
-
 
 
 	
@@ -737,14 +606,14 @@ void AppWindow::glutDisplay()
 
 
 	
-	if (viewTrickMode == true)
-	{
+	//if (viewTrickMode == true)
+	//{
 
-		//_deck.build();
-		GsMat rotX, rotY, rotZ, T, translation, transY, rotation, init, scale;
-		_deck.draw(T, _spr, _light);
+	//	//_deck.build();
+	//	GsMat rotX, rotY, rotZ, T, translation, transY, rotation, init, scale;
+	//	_deck.draw(T, _spr, _light);
 
-	}
+	//}
 	
 
 
