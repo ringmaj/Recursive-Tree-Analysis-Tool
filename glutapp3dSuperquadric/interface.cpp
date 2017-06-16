@@ -98,8 +98,9 @@ void Interface::build()
 
 
 	// Outer Boundaries, cover
-	createBox(-0.5 + 1.1, 0.0, 1.15, 2.0, P, C, GsColor(139, 39, 39));
+	createBox(-0.4 + 1.1, 0.0, 1.24, 2.1, P, C, GsColor(139, 39, 39));
 	createBox(-0.5 - 1.1, 0.0, 1.1, 2.0, P, C, GsColor(139, 39, 39));
+	createBox(-0.522 - 1.1, -2.0, 1.2, 2.0, P, C, GsColor(139, 39, 39));
 
 	// bottom
     createBox(0.0, -2.0, 2.5, 1.91, P, C, GsColor(139, 39, 39));
@@ -108,8 +109,8 @@ void Interface::build()
 
 	// equation box cover boundary
 	createBox(-0.5, -0.8, 1.1, 0.3, P, C, GsColor::white);
-
-
+	
+	//change
 	// 
 
 	// send data to OpenGL buffers:
