@@ -1,16 +1,20 @@
-# C++ compilation intermediates
-*.o
-*.d
+
+*.obj
+
+visualc14/\.vs/superquadric/v14/\.suo
 
 *.exe
 
-*/build
-*/.DS_Store
-.DS_Store
-freeglut
-glew
-glutapp3dSuperquadric
-gsim
-visualc14
-/visualc14
-visualc14/
+*.log
+
+*.tlog
+
+*.pdb
+
+*.db
+
+*.idb
+
+*.lastbuildstate
+
+*.ilk
