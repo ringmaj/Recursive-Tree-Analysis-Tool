@@ -100,7 +100,9 @@ void Interface::build()
 	// Outer Boundaries, cover
 	createBox(-0.5 + 1.1, 0.0, 1.15, 2.0, P, C, GsColor(139, 39, 39));
 	createBox(-0.5 - 1.1, 0.0, 1.1, 2.0, P, C, GsColor(139, 39, 39));
-	createBox(0.0, -2.0, 2.5, 2.05, P, C, GsColor(139, 39, 39));
+
+	// bottom
+    createBox(0.0, -2.0, 2.5, 1.91, P, C, GsColor(139, 39, 39));
 	createBox(0.0, 2.0, 2.5, 2.05, P, C, GsColor(139, 39, 39));
 
 
@@ -127,7 +129,7 @@ void Interface::build()
 
 						  // save size so that we can free our buffers and later draw the OpenGL arrays:
 	_numpoints = P.size();
-
+	
 	// free non-needed memory:
 	P.capacity(0); C.capacity(0);
 }

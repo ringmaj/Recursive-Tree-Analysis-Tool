@@ -1,26 +1,38 @@
-﻿  buttons.cpp
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\buttons.cpp(7): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\buttons.cpp(30): warning C4101: 'i': unreferenced local variable
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\buttons.cpp(47): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\buttons.cpp(53): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\buttons.cpp(71): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\buttons.cpp(91): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\buttons.cpp(92): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\buttons.cpp(96): warning C4305: '+=': truncation from 'double' to 'float'
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\buttons.cpp(102): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\buttons.cpp(103): warning C4305: '-=': truncation from 'double' to 'float'
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\buttons.cpp(107): warning C4305: '+=': truncation from 'double' to 'float'
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\buttons.cpp(113): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\buttons.cpp(114): warning C4305: '-=': truncation from 'double' to 'float'
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\buttons.cpp(129): warning C4305: '+=': truncation from 'double' to 'float'
-  recursive_tree.cpp
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\recursive_tree.cpp(22): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\recursive_tree.cpp(23): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\recursive_tree.cpp(50): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\recursive_tree.cpp(88): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\recursive_tree.cpp(95): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\recursive_tree.cpp(116): warning C4305: '-=': truncation from 'double' to 'float'
-c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\recursive_tree.cpp(157): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  Generating Code...
+﻿  app_window.cpp
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(63): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(152): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(153): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(298): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(304): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(306): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(350): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(356): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(377): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(381): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(385): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(389): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(393): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(404): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(408): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(415): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(422): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(429): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(436): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(450): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(455): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(460): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(466): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(470): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(474): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(478): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(482): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(486): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(490): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(494): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(498): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(505): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(511): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(516): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\majok\onedrive\documents\personal projects\recursive\glutapp3dsuperquadric\app_window.cpp(520): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
   glutapp3d.vcxproj -> C:\Users\majok\OneDrive\Documents\Personal Projects\Recursive\glutapp3dSuperquadric\visualc14\obj\glutapp3d_Debug\glutapp3d.exe
   glutapp3d.vcxproj -> obj\glutapp3d_Debug\glutapp3d.pdb (Full PDB)

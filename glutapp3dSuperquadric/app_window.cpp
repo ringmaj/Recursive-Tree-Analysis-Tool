@@ -148,10 +148,11 @@ void AppWindow::glutKeyboard(unsigned char key, int x, int y)
 	switch (key)
 	{
 	// Increase/decrease branch width
+	case 27: exit(1); break;
 	case 'a': _recursiveTree.setBranchWidth(_recursiveTree.getBranchWidth() - 0.1); std::cout << "Branch Width:  " << _recursiveTree.getBranchWidth() << std::endl;  redraw(); break;
 	case 'q': _recursiveTree.setBranchWidth(_recursiveTree.getBranchWidth() + 0.1); std::cout << "Branch Width:  " << _recursiveTree.getBranchWidth() << std::endl;  redraw(); break;
 
-
+	
 	case ' ': _buttonsInput.setVertScrollY(0.0); redraw();  break;
 	}
 }
