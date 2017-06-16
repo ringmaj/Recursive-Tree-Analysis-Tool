@@ -116,18 +116,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\app_main.cpp" />
-    <ClCompile Include="..\axle.cpp" />
-    <ClCompile Include="..\base_plate.cpp" />
     <ClCompile Include="..\buttons.cpp" />
-    <ClCompile Include="..\curve_eval.cpp" />
-    <ClCompile Include="..\deck.cpp" />
     <ClCompile Include="..\gsim\gs_input.cpp" />
     <ClCompile Include="..\gsim\gs_material.cpp" />
     <ClCompile Include="..\gsim\gs_string.cpp" />
     <ClCompile Include="..\gsim\gs_strings.cpp" />
     <ClCompile Include="..\interface.cpp" />
     <ClCompile Include="..\lines.cpp" />
-    <ClCompile Include="..\rail.cpp" />
     <ClCompile Include="..\recursive_tree.cpp" />
     <ClCompile Include="..\scrollBox.cpp" />
     <ClCompile Include="..\so_axis.cpp" />
@@ -141,28 +136,14 @@
     <ClCompile Include="..\gsim\gs_vec.cpp" />
     <ClCompile Include="..\gsim\gs_vec2.cpp" />
     <ClCompile Include="..\ogl_tools.cpp" />
-    <ClCompile Include="..\so_clock.cpp" />
-    <ClCompile Include="..\so_curve.cpp" />
-    <ClCompile Include="..\so_graph.cpp" />
-    <ClCompile Include="..\so_lines.cpp" />
     <ClCompile Include="..\so_poly.cpp" />
-    <ClCompile Include="..\so_superquadric.cpp" />
-    <ClCompile Include="..\so_myobject.cpp" />
-    <ClCompile Include="..\wheel.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\axle.h" />
-    <ClInclude Include="..\base_plate.h" />
     <ClInclude Include="..\buttons.h" />
     <ClInclude Include="..\interface.h" />
     <ClInclude Include="..\lines.h" />
-    <ClInclude Include="..\rail.h" />
     <ClInclude Include="..\recursive_tree.h" />
     <ClInclude Include="..\scrollBox.h" />
-    <ClInclude Include="..\so_clock.h" />
-    <ClInclude Include="..\curve_eval.h" />
-    <ClInclude Include="..\deck.h" />
-    <ClInclude Include="..\so_graph.h" />
     <ClInclude Include="..\gsim\gs_light.h" />
     <ClInclude Include="..\gsim\gs_manager.h" />
     <ClInclude Include="..\gsim\gs_input.h" />
@@ -181,12 +162,7 @@
     <ClInclude Include="..\gsim\gs_vec.h" />
     <ClInclude Include="..\gsim\gs_vec2.h" />
     <ClInclude Include="..\ogl_tools.h" />
-    <ClInclude Include="..\so_curve.h" />
-    <ClInclude Include="..\so_lines.h" />
     <ClInclude Include="..\so_poly.h" />
-    <ClInclude Include="..\so_superquadric.h" />
-    <ClInclude Include="..\so_myobject.h" />
-    <ClInclude Include="..\wheel.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\fsh_flat.glsl" />

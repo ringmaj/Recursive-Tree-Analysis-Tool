@@ -109,9 +109,6 @@ void AppWindow::initPrograms()
 	_poly4.init(GsColor::darkblue, pt1, pt2, pt3, GsColor::darkred);
 
 
-	_clock.init();
-
-	_deck.init();
 
 	// set light :
 	_light.set(GsVec(0, -10, 0), GsColor(90, 90, 90, 255), GsColor::white, GsColor::white);
@@ -119,7 +116,6 @@ void AppWindow::initPrograms()
 
 	// Build some of my scene objects:
 	_axis.build(1.0f); // axis has radius 1.0
-	_clock.build(t);
 	_buttonsInput.build();
 	
 	_interface.build();

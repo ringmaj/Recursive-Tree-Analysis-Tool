@@ -49,43 +49,7 @@
     <ClCompile Include="..\gsim\gs_strings.cpp">
       <Filter>graphsim tools</Filter>
     </ClCompile>
-    <ClCompile Include="..\so_myobject.cpp">
-      <Filter>myapp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\so_superquadric.cpp">
-      <Filter>myapp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\so_lines.cpp">
-      <Filter>myapp</Filter>
-    </ClCompile>
     <ClCompile Include="..\so_poly.cpp">
-      <Filter>myapp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\curve_eval.cpp">
-      <Filter>myapp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\so_curve.cpp">
-      <Filter>myapp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\so_graph.cpp">
-      <Filter>myapp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deck.cpp">
-      <Filter>myapp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\so_clock.cpp">
-      <Filter>myapp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\base_plate.cpp">
-      <Filter>myapp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\axle.cpp">
-      <Filter>myapp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\wheel.cpp">
-      <Filter>myapp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\rail.cpp">
       <Filter>myapp</Filter>
     </ClCompile>
     <ClCompile Include="..\interface.cpp">
@@ -156,47 +120,11 @@
     <ClInclude Include="..\gsim\gs_manager.h">
       <Filter>graphsim tools</Filter>
     </ClInclude>
-    <ClInclude Include="..\so_myobject.h">
-      <Filter>myapp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\so_superquadric.h">
-      <Filter>myapp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\so_lines.h">
-      <Filter>myapp</Filter>
-    </ClInclude>
     <ClInclude Include="..\so_poly.h">
-      <Filter>myapp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\curve_eval.h">
-      <Filter>myapp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\so_curve.h">
       <Filter>myapp</Filter>
     </ClInclude>
     <ClInclude Include="..\gsim\gs_light.h">
       <Filter>graphsim tools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\so_graph.h">
-      <Filter>myapp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\deck.h">
-      <Filter>myapp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\so_clock.h">
-      <Filter>myapp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base_plate.h">
-      <Filter>myapp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\axle.h">
-      <Filter>myapp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\wheel.h">
-      <Filter>myapp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\rail.h">
-      <Filter>myapp</Filter>
     </ClInclude>
     <ClInclude Include="..\interface.h">
       <Filter>myapp</Filter>

@@ -46,6 +46,7 @@ void RecursiveTree::init()
 void RecursiveTree::build(int recursions, int searchDepth)
 {
 
+	//test
 	glLineWidth(0.8);
 	orig.capacity(0);
 	int depth = 0;

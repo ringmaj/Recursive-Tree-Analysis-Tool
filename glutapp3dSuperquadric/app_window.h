@@ -11,9 +11,8 @@
 # include "so_axis.h"
 # include "so_poly.h"
 # include "gsim/gs_light.h"
-# include "so_clock.h"
-# include "deck.h"
 
+//change
 # include "interface.h"
 # include "lines.h"
 # include "recursive_tree.h"
@@ -51,9 +50,7 @@ private:
 
 
 
-
-	SoClock _clock;
-
+	// poly
 	SoPoly _poly1;
 	SoPoly _poly2;
 	SoPoly _poly3;
@@ -61,7 +58,6 @@ private:
 
 	
 
-	Deck _deck;
 	
 	GsLight _light;
 
