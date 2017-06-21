@@ -38,17 +38,17 @@ private:
 
 
 
-	struct recursiveNode
-	{
-		// holds the number of recursions 4T(n)
-		int recursions;
+	//struct recursiveNode
+	//{
+	//	// holds the number of recursions 4T(n)
+	//	int recursions;
 
-		//num1 and num2 are for division purposes, 4T(3/2 n) num1 = 3, num2 = 2
-		int num1;
-		int num2;
-	};
+	//	//num1 and num2 are for division purposes, 4T(3/2 n) num1 = 3, num2 = 2
+	//	int num1;
+	//	int num2;
+	//};
 
-
+	GsArray<recursiveNode> equationArray;
 
 	// poly
 	SoPoly _poly1;
@@ -83,6 +83,9 @@ private:
 
 	int depth;
 	int recursion;
+
+	// Holds the x position for the equation text for each recursive node
+	float xPosition;
 
 
 	bool vertScroll;
