@@ -93,6 +93,7 @@ public:
 	GsVec rayXYintercept(const GsVec2& v);
 	void drawMenus();
 	void printTreeText();
+	void printEquation();
 
 private: // functions derived from the base class
 	virtual void glutMenu(int m);
