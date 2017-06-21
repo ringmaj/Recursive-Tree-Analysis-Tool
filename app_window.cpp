@@ -67,6 +67,12 @@ AppWindow::AppWindow(const char* label, int x, int y, int w, int h)
 
 	equationArray.push(input);
 
+	input.recursions = 4;
+	input.num1 = 1;
+	input.num2 = 4;
+
+	equationArray.push(input);
+
 }
 
 float degToRadian(float deg)
@@ -180,10 +186,10 @@ void AppWindow::glutSpecial(int key, int x, int y)
 
 	switch (key)
 	{
-	case GLUT_KEY_LEFT:      if (recursion > 2) recursion--; //std::cout << "recursion: " << recursion << std::endl;  redraw(); if (ctrl)_roty -= incr; else if (alt)_trans.x -= inct; //std::cout << "left" << std::endl; break;
-	case GLUT_KEY_RIGHT:     recursion++; //std::cout << "recursion: " << recursion << std::endl;  redraw(); if (ctrl)_roty += incr; else if (alt)_trans.x += inct; break;
-	case GLUT_KEY_UP:        if (depth >= 1) depth--; //std::cout << "depth: " << depth << std::endl;  if (ctrl)_rotx += incr; else if (alt)_trans.y += inct; break;
-	case GLUT_KEY_DOWN:      depth++; //std::cout << "depth: " << depth << std::endl; if (ctrl)_rotx -= incr; else if (alt)_trans.y -= inct; break;
+	case GLUT_KEY_LEFT:      if (recursion > 2) recursion--; std::cout << "recursion: " << recursion << std::endl;  redraw(); if (ctrl)_roty -= incr; else if (alt)_trans.x -= inct; std::cout << "left" << std::endl; break;
+	case GLUT_KEY_RIGHT:     recursion++; std::cout << "recursion: " << recursion << std::endl;  redraw(); if (ctrl)_roty += incr; else if (alt)_trans.x += inct; break;
+	case GLUT_KEY_UP:        if (depth >= 1) depth--; std::cout << "depth: " << depth << std::endl;  if (ctrl)_rotx += incr; else if (alt)_trans.y += inct; break;
+	case GLUT_KEY_DOWN:      depth++; std::cout << "depth: " << depth << std::endl; if (ctrl)_rotx -= incr; else if (alt)_trans.y -= inct; break;
 	case GLUT_KEY_PAGE_UP:   if (ctrl)_fovy -= incf; else if (alt)_trans.z += inct; break;
 	case GLUT_KEY_PAGE_DOWN: if (ctrl)_fovy += incf; else if (alt)_trans.z -= inct; break;
 	default: return; // return without rendering
@@ -546,6 +552,11 @@ void AppWindow::printTreeText()
 	//std::cout << points[0].y << std::endl;
 	if (points[0].y <= 0.81)
 	printbitmap(GLUT_BITMAP_HELVETICA_18,"T(n)", points[0].x + 0.035f, points[0].y -0.08f );
+
+
+
+
+
 
 	for (int i = 1; i < points.size(); i++)
 	{
