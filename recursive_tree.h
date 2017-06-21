@@ -12,6 +12,17 @@
 // Scene objects should be implemented in their own classes; and
 // here is an example of how to organize a scene object in a class.
 // Scene object axis:
+
+struct recursiveNode
+{
+	// holds the number of recursions 4T(n)
+	int recursions;
+
+	//num1 and num2 are for division purposes, 4T(3/2 n) num1 = 3, num2 = 2
+	int num1;
+	int num2;
+};
+
 class RecursiveTree : public GlObjects
 {
 private:
@@ -28,20 +39,12 @@ private:
 	float rootYPos;
 	float branchWidth;
 
-	struct recursiveNode
-	{
-		// holds the number of recursions 4T(n)
-		int recursions;
-
-		//num1 and num2 are for division purposes, 4T(3/2 n) num1 = 3, num2 = 2
-		int num1;
-		int num2;
-	};
-
-	GsArray<recursiveNode> equationArr;
+	
 
 public:
 	RecursiveTree();
+
+
 	void init();
 	float getRootXPos() { return rootXPos; }
 	float getRootYPos() { return rootYPos; }
@@ -50,9 +53,7 @@ public:
 	float getBranchWidth() { return branchWidth; }
 	void setBranchWidth(float w) {  branchWidth = w; }
 	GsArray<GsVec> getPoints() { return orig; }
-
-	void addNode(int r, int n1, int n2);
-	void build(int num_recursions, int depth);
+	void build(int num_recursions, int depth, GsArray<recursiveNode> equation);
 	void draw(GsMat& tr, GsMat& pr);
 };
 
