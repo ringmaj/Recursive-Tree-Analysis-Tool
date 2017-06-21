@@ -551,6 +551,17 @@ void AppWindow::printTreeText()
 	
 }
 
+
+void AppWindow::printEquation()
+{
+
+		// testing equation print
+		printbitmap(GLUT_BITMAP_HELVETICA_18, "T(n)", -0.35f,  - 0.8f);
+
+
+}
+
+
 // here we will redraw the scene according to the current state of the application.
 void AppWindow::glutDisplay()
 {
