@@ -2,6 +2,7 @@
 # include <iostream>
 # include <gsim/gs.h>
 # include "app_window.h"
+#include <string>
 
 # define M_PI           3.14159265358979323846 
 
@@ -50,11 +51,21 @@ AppWindow::AppWindow(const char* label, int x, int y, int w, int h)
 	recursion = 2;
 	vertScroll = false;
 
-	recursiveNode node;
-	node.recursions = 3;
-	node.num1 = 2;
-	node.num2 = 4;
+	
+	// Sample input, has two nodes for the equation
+	recursiveNode input;
+	input.recursions = 3;
+	input.num1 = 2;
+	input.num2 = 4;
 
+	equationArray.push(input);
+
+
+	input.recursions = 2;
+	input.num1 = 1;
+	input.num2 = 3;
+
+	equationArray.push(input);
 
 }
 
@@ -132,7 +143,7 @@ GsVec2 AppWindow::windowToScene(const GsVec2& v)
 	GsVec2 out = GsVec2((2.0f*(v.x / float(_w))) - 1.0f,
 		1.0f - (2.0f*(v.y / float(_h))));
 
-	//std::cout << "x: " << out.x << " \t   y: " << out.y << std::endl;
+	////std::cout << "x: " << out.x << " \t   y: " << out.y << std::endl;
 
 
 
@@ -149,8 +160,8 @@ void AppWindow::glutKeyboard(unsigned char key, int x, int y)
 	{
 	// Increase/decrease branch width
 	case 27: exit(1); break;
-	case 'a': _recursiveTree.setBranchWidth(_recursiveTree.getBranchWidth() - 0.1); std::cout << "Branch Width:  " << _recursiveTree.getBranchWidth() << std::endl;  redraw(); break;
-	case 'q': _recursiveTree.setBranchWidth(_recursiveTree.getBranchWidth() + 0.1); std::cout << "Branch Width:  " << _recursiveTree.getBranchWidth() << std::endl;  redraw(); break;
+	case 'a': _recursiveTree.setBranchWidth(_recursiveTree.getBranchWidth() - 0.1); //std::cout << "Branch Width:  " << _recursiveTree.getBranchWidth() << std::endl;  redraw(); break;
+	case 'q': _recursiveTree.setBranchWidth(_recursiveTree.getBranchWidth() + 0.1); //std::cout << "Branch Width:  " << _recursiveTree.getBranchWidth() << std::endl;  redraw(); break;
 
 
 	case ' ': _buttonsInput.setVertScrollY(0.0); redraw();  break;
@@ -165,14 +176,14 @@ void AppWindow::glutSpecial(int key, int x, int y)
 	const float incf = 0.05f;
 	bool ctrl = glutGetModifiers()&GLUT_ACTIVE_CTRL ? true : false;
 	bool alt = glutGetModifiers()&GLUT_ACTIVE_ALT ? true : false;
-	//std::cout<<ctrl<<gsnl;
+	////std::cout<<ctrl<<gsnl;
 
 	switch (key)
 	{
-	case GLUT_KEY_LEFT:      if (recursion > 2) recursion--; std::cout << "recursion: " << recursion << std::endl;  redraw(); if (ctrl)_roty -= incr; else if (alt)_trans.x -= inct; std::cout << "left" << std::endl; break;
-	case GLUT_KEY_RIGHT:     recursion++; std::cout << "recursion: " << recursion << std::endl;  redraw(); if (ctrl)_roty += incr; else if (alt)_trans.x += inct; break;
-	case GLUT_KEY_UP:        if (depth >= 1) depth--; std::cout << "depth: " << depth << std::endl;  if (ctrl)_rotx += incr; else if (alt)_trans.y += inct; break;
-	case GLUT_KEY_DOWN:      depth++; std::cout << "depth: " << depth << std::endl; if (ctrl)_rotx -= incr; else if (alt)_trans.y -= inct; break;
+	case GLUT_KEY_LEFT:      if (recursion > 2) recursion--; //std::cout << "recursion: " << recursion << std::endl;  redraw(); if (ctrl)_roty -= incr; else if (alt)_trans.x -= inct; //std::cout << "left" << std::endl; break;
+	case GLUT_KEY_RIGHT:     recursion++; //std::cout << "recursion: " << recursion << std::endl;  redraw(); if (ctrl)_roty += incr; else if (alt)_trans.x += inct; break;
+	case GLUT_KEY_UP:        if (depth >= 1) depth--; //std::cout << "depth: " << depth << std::endl;  if (ctrl)_rotx += incr; else if (alt)_trans.y += inct; break;
+	case GLUT_KEY_DOWN:      depth++; //std::cout << "depth: " << depth << std::endl; if (ctrl)_rotx -= incr; else if (alt)_trans.y -= inct; break;
 	case GLUT_KEY_PAGE_UP:   if (ctrl)_fovy -= incf; else if (alt)_trans.z += inct; break;
 	case GLUT_KEY_PAGE_DOWN: if (ctrl)_fovy += incf; else if (alt)_trans.z -= inct; break;
 	default: return; // return without rendering
@@ -214,9 +225,9 @@ GsVec AppWindow::rayXYintercept(const GsVec2& v)
 void AppWindow::glutMouse(int button, int state, int x, int y)
 {
 	GsVec m = rayXYintercept(GsVec2(x, y));
-	//std::cout<<m<<gsnl;
+	////std::cout<<m<<gsnl;
 
-	//std::cout << "x: " << x << "\t y: " << y << std::endl;
+	////std::cout << "x: " << x << "\t y: " << y << std::endl;
 
 
 	// Check if a vertex is being selected, ie, if m is very close to a vertex:
@@ -289,7 +300,7 @@ void AppWindow::glutMotion(int x, int y)
 	GsVec m = rayXYintercept(GsVec2(x, y));
 
 
-	std::cout << "x: " << m.x << " \t   y: " << m.y << std::endl;
+	//std::cout << "x: " << m.x << " \t   y: " << m.y << std::endl;
 
 	if (  ((m.x >= 0.005 && m.x <= 0.045) || vertScroll == true ) && m.y <= (_buttonsInput.getVertScrollY() + 0.15) && m.y >= (_buttonsInput.getVertScrollY() - 0.15))
 	{
@@ -302,9 +313,9 @@ void AppWindow::glutMotion(int x, int y)
 		{
 			vertScroll = true;
 			float yMove = abs(0.7 - _buttonsInput.getVertScrollY());
-			std::cout << "ymove: " << yMove << std::endl;
+			//std::cout << "ymove: " << yMove << std::endl;
 			_recursiveTree.setRootYPos(0.8 + yMove);
-			std::cout << "HIT" << std::endl;
+			//std::cout << "HIT" << std::endl;
 			_buttonsInput.setVertScrollY(m.y);
 
 			if (m.y > (_buttonsInput.getVertScrollY() + 0.15) || m.y < (_buttonsInput.getVertScrollY() - 0.15))
@@ -325,7 +336,7 @@ void AppWindow::glutMotion(int x, int y)
 
 void AppWindow::glutMenu(int m)
 {
-	std::cout << "Menu Event: " << m << std::endl;
+	////std::cout << "Menu Event: " << m << std::endl;
 }
 
 void AppWindow::glutReshape(int w, int h)
@@ -532,7 +543,7 @@ void AppWindow::printTreeText()
 
 	GsArray<GsVec> points = _recursiveTree.getPoints();
 
-	std::cout << points[0].y << std::endl;
+	//std::cout << points[0].y << std::endl;
 	if (points[0].y <= 0.81)
 	printbitmap(GLUT_BITMAP_HELVETICA_18,"T(n)", points[0].x + 0.035f, points[0].y -0.08f );
 
@@ -540,7 +551,7 @@ void AppWindow::printTreeText()
 	{
 		if (points[i].y < 0.75 && points[i].y > -0.5)
 		{
-			std::cout << "space: " << abs((points[i].x + 0.06) - (points[i+1].x + 0.06)) << std::endl;
+			////std::cout << "space: " << abs((points[i].x + 0.06) - (points[i+1].x + 0.06)) << std::endl;
 			if( abs((points[i].x + 0.06) - (points[i+1].x + 0.05)) > 0.05)
 			printbitmap(GLUT_BITMAP_HELVETICA_18, "T(x)", points[i].x + 0.06f, points[i].y - 0.12f);
 			else
@@ -551,12 +562,68 @@ void AppWindow::printTreeText()
 	
 }
 
-
+// Prints the equation the user selects at the bottom of the screen
 void AppWindow::printEquation()
 {
 
+
+	
+
+
+	float x = -0.62;
+
+
+	//Print all nodes in equation
+	for (int i = 0; i < equationArray.size(); i++)
+	{
+		// Sample string for the node
+		string nodeString = "4(3/2n)";
+
+		// Number of recursions
+		string s = std::to_string(equationArray[i].recursions);
+		char const *pchar = s.c_str();
+		nodeString[0] = pchar[0];
+
+		// First Number
+		 s = std::to_string(equationArray[i].num1);
+		 pchar = s.c_str();
+		nodeString[2] = pchar[0];
+
+		// First Number
+		s = std::to_string(equationArray[i].num2);
+		pchar = s.c_str();
+		nodeString[4] = pchar[0];
+
+
+
+
+
+		cout << "string:" << nodeString << std::endl;
+		
+
+		printbitmap(GLUT_BITMAP_HELVETICA_18, nodeString, x, -0.7f);
+		printbitmap(GLUT_BITMAP_HELVETICA_18, "+", x + 0.12, -0.7f);
+		x = x + 0.15;
+
+
+	}
+
+
+
+
+
+	//Print all nodes in equation
+	//for (int i = 0; i < equationArray.size(); i++)
+	//{
+		/*printbitmap(GLUT_BITMAP_HELVETICA_18, "4(3/2n)", x, -0.7f);
+		printbitmap(GLUT_BITMAP_HELVETICA_18, "+", x + 0.12, -0.7f);
+		x = x + 0.15;
+		printbitmap(GLUT_BITMAP_HELVETICA_18, "4(3/2n)", x, -0.7f);*/
+
+	//}
+
 		// testing equation print
-		printbitmap(GLUT_BITMAP_HELVETICA_18, "T(n)", -0.35f,  - 0.8f);
+		
 
 
 }
@@ -586,9 +653,10 @@ void AppWindow::glutDisplay()
 
 
 	
-	_recursiveTree.build(recursion, depth);
+	_recursiveTree.build(recursion, depth, equationArray);
 
 	printTreeText();
+	printEquation();
 	drawMenus();
 
 	_buttonsInput.build();
