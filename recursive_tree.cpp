@@ -38,7 +38,7 @@ void RecursiveTree::build(int recursions, int searchDepth, GsArray<recursiveNode
 
 	//test
 	glLineWidth(0.8);
-	orig.capacity(0);
+	nodeArray.capacity(0);
 	int depth = 0;
 
 	// Holds the size for the boundaries between recursions
@@ -49,80 +49,129 @@ void RecursiveTree::build(int recursions, int searchDepth, GsArray<recursiveNode
 
 
 
-
-	//Push starting point
-	orig.push(GsVec(rootXPos, rootYPos, 0.0f));
-
-
 	// Create first recursive iteration for depth 1, Base case:  Root adds main nodes below, then main nodes recurse further
 	float x = rootXPos - (boundary / 2);
 	
 	std::cout << "equation array size: " << equation.size() << std::endl;
+
+	// stores the x/y position of the nodes at depth 1
+	float nodeXPos = x + incr;
+	float nodeYPs = rootYPos - 0.2f;
+
+
+	// Push points at depth 1
+	node input;
 	for (int i = 0; i < equation.size(); i++)
 	{
 		x += incr;
 		P.push(GsVec(rootXPos, rootYPos, 0.0f));
-		P.push(GsVec(x, rootYPos - 0.2f, 0.0f));
+		P.push(GsVec(x, rootYPos - 0.15f, 0.0f));
 
-		// Push new point to orig, save for later
-		orig.push(GsVec(x, (rootYPos)-0.2f, 0.0f));
+		input.recursions = equation[i].recursions;
 
+		input.orig_num1 = equation[i].num1;
+		input.orig_num2 = equation[i].num2;
+		input.num1 = equation[i].num1;
+		input.num2 = equation[i].num2;
+
+		input.x = x;
+		input.y = rootYPos - 0.2f;
+
+		input.numChildren = 0;
+		input.expanded = false;
+
+		input.boundary = branchWidth;
+
+		nodeArray.push(input);
 	}
 
-	//// Depth is now 1
+	
+
+	
+
+
+	// Add nodes for the lower depths
 	depth = 1;
+	float newBoundary;
+	float size = nodeArray.size();
 
-
-
-	// Print tree for each node in equation
-	for (int i = 0; i < equation.size(); i++)
+	while (depth <= 2)
 	{
 
+		
+
+		for (int i = 0; i < 3; i++)
+		{
+			// Check if node is already fully expanded
+			if (nodeArray[i].recursions == nodeArray[i].numChildren)
+				nodeArray[i].expanded = true;
+
+			
+
+			// Node still needs to be expanded
+			if (nodeArray[i].expanded == false)
+			{
+
+				 x = nodeArray[i].x - (nodeArray[i].boundary / 2);
+				 incr = nodeArray[i].boundary / (nodeArray[i].recursions + 1);
+
+				
+				 std::cout << "recursions: " << nodeArray[i].recursions  << "\t numChildren: " << nodeArray[i].numChildren << std::endl;
+				while (nodeArray[i].recursions != nodeArray[i].numChildren)
+				{
+
+					input.recursions = nodeArray[i].recursions;
+
+					input.orig_num1 = nodeArray[i].orig_num1;
+					input.orig_num2 = nodeArray[i].orig_num2;
+					input.num1 = nodeArray[i].num1 * nodeArray[i].orig_num1;
+					input.num2 = nodeArray[i].num2 * nodeArray[i].orig_num2;
+					
+					x += incr;
+					input.x = x;
+					input.y = nodeArray[i].y - 0.2f;
+
+					input.numChildren = 0;
+					input.expanded = false;
+
+					input.boundary = nodeArray[i].boundary / nodeArray[i].recursions;
+
+					
+					nodeArray.push(input);
+					std::cout << "NODE SIZE: " << nodeArray.size() << std::endl;
+					nodeArray[i].numChildren++;
+
+					// Push points to draw line
+					P.push(GsVec(nodeArray[i].x, nodeArray[i].y - 0.065f, 0.0f));
+					P.push(GsVec(input.x, input.y - 0.3f, 0.0f));
+
+				}
+				
+
+
+			}
+
+
+		}
+
+
+		depth++;
 	}
 
-
-	//int startIndex = pow(recursions, depth) - (recursions - 1);
-
-	//while (depth <= searchDepth)
-	//{
-
-	//	//std::cout << "size: " << orig.size() << std::endl;
-
-	//	int endIndex = (startIndex + pow(recursions, depth));
-
-	//	// Boundary shrinks for each depth
-	//	boundary = boundary / recursions;
-	//	incr = boundary / (recursions + 1);
-	//	//std::cout << "incr: " << incr << std::endl;
+	std::cout << "NODE SIZE: " << nodeArray.size() << std::endl;
 
 
-	//	//	std::cout << "start: " << startIndex << "\tend: " << endIndex << std::endl;
-	//	// Does recursion for each subtree
-
-	//	for (int i = startIndex; i < endIndex; i++)
-	//	{
 
 
-	//		x = orig[i].x - (boundary / 2);
-	//		//std::cout << "x: " << x << std::endl;
-	//		for (int j = 0; j < recursions; j++)
-	//		{
-	//			x += incr;
-	//			GsVec start = orig[i];
-	//			start.y -= 0.08;
-	//			P.push(start);
-	//			P.push(GsVec(x, orig[i].y - 0.2f, 0.0f));
 
-	//			// Push new point to orig, save for later
-	//			orig.push(GsVec(x, orig[i].y - 0.2f, 0.0f));
-	//			//std::cout << "push point: " << i + j + 1 << std::endl;
-	//		}
-	//	}
 
-	//	//std::cout << "size: " << orig.size() << std::endl;
-	//	startIndex = endIndex;
-	//	depth++;
-	//}
+
+
+
+
+
+
+
 
 
 	C.size(P.size());
