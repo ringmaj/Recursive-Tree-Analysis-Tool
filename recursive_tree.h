@@ -66,6 +66,7 @@ private:
 	float rootXPos;
 	float rootYPos;
 	float branchWidth;
+	float branchHeight;
 
 public:
 	RecursiveTree();
@@ -80,6 +81,8 @@ public:
 	void setRootYPos(float y) { rootYPos = y; }
 	float getBranchWidth() { return branchWidth; }
 	void setBranchWidth(float w) {  branchWidth = w; }
+	float getBranchHeight() { return branchHeight; }
+	void setBranchHeight(float h) { branchHeight = h; }
 	GsArray<node> getNodes() { return nodeArray; }
 	
 };
