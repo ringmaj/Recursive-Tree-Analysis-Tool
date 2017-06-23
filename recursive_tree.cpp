@@ -9,6 +9,7 @@ RecursiveTree::RecursiveTree()
 	rootXPos = -0.5;
 	rootYPos = 0.8;
 	branchWidth = 1.2;
+	branchHeight = 0.2;
 
 
 }
@@ -66,6 +67,8 @@ void RecursiveTree::build(int recursions, int searchDepth, GsArray<recursiveNode
 		x += incr;
 		P.push(GsVec(rootXPos, rootYPos, 0.0f));
 		P.push(GsVec(x, rootYPos - 0.15f, 0.0f));
+		C.push(GsColor::black);
+		C.push(GsColor::black);
 
 		input.recursions = equation[i].recursions;
 
@@ -80,7 +83,7 @@ void RecursiveTree::build(int recursions, int searchDepth, GsArray<recursiveNode
 		input.numChildren = 0;
 		input.expanded = false;
 
-		input.boundary = branchWidth;
+		input.boundary = branchWidth * 0.35;
 
 		nodeArray.push(input);
 	}
@@ -93,14 +96,15 @@ void RecursiveTree::build(int recursions, int searchDepth, GsArray<recursiveNode
 	// Add nodes for the lower depths
 	depth = 1;
 	float newBoundary;
-	float size = nodeArray.size();
+	
 
-	while (depth <= 2)
+	while (depth <= searchDepth)
 	{
 
 		
+		float size = nodeArray.size();
 
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < size; i++)
 		{
 			// Check if node is already fully expanded
 			if (nodeArray[i].recursions == nodeArray[i].numChildren)
@@ -116,7 +120,7 @@ void RecursiveTree::build(int recursions, int searchDepth, GsArray<recursiveNode
 				 incr = nodeArray[i].boundary / (nodeArray[i].recursions + 1);
 
 				
-				 std::cout << "recursions: " << nodeArray[i].recursions  << "\t numChildren: " << nodeArray[i].numChildren << std::endl;
+				// std::cout << "recursions: " << nodeArray[i].recursions  << "\t numChildren: " << nodeArray[i].numChildren << std::endl;
 				while (nodeArray[i].recursions != nodeArray[i].numChildren)
 				{
 
@@ -129,7 +133,7 @@ void RecursiveTree::build(int recursions, int searchDepth, GsArray<recursiveNode
 					
 					x += incr;
 					input.x = x;
-					input.y = nodeArray[i].y - 0.2f;
+					input.y = nodeArray[i].y - branchHeight;
 
 					input.numChildren = 0;
 					input.expanded = false;
@@ -138,12 +142,23 @@ void RecursiveTree::build(int recursions, int searchDepth, GsArray<recursiveNode
 
 					
 					nodeArray.push(input);
-					std::cout << "NODE SIZE: " << nodeArray.size() << std::endl;
+		
 					nodeArray[i].numChildren++;
 
 					// Push points to draw line
 					P.push(GsVec(nodeArray[i].x, nodeArray[i].y - 0.065f, 0.0f));
-					P.push(GsVec(input.x, input.y - 0.3f, 0.0f));
+					P.push(GsVec(input.x, input.y , 0.0f));
+
+					if (depth == searchDepth)
+					{
+						C.push(GsColor::red);
+						C.push(GsColor::red);
+					}
+					else
+					{
+						C.push(GsColor::black);
+						C.push(GsColor::black);
+					}
 
 				}
 				
@@ -160,159 +175,6 @@ void RecursiveTree::build(int recursions, int searchDepth, GsArray<recursiveNode
 
 	std::cout << "NODE SIZE: " << nodeArray.size() << std::endl;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	C.size(P.size());
-	C.setall(GsColor::black);
-
-	int last = pow(recursions, searchDepth + 1) * 2;
-
-	for (int i = C.size() - last; i < C.size(); i++)
-		C.set(i, GsColor::red);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	//glLineWidth(0.8);
-	//orig.capacity(0);
-	//int depth = 0;
-
-	//// Holds the size for the boundaries between recursions
-	//float boundary = branchWidth;
-
-	//// Holds the increment for in between recursions
-	//float incr = boundary / (recursions + 1);
-
-
-
-
-	////Push starting point
-	//orig.push(GsVec(rootXPos,rootYPos, 0.0f));
-
-
-	//// Create first recursive iteration for depth 1, Base case
-	//float x = rootXPos - (boundary / 2);
-	////std::cout << "x: " << x << std::endl;
-	//for (int i = 0; i < recursions; i++)
-	//{
-	//	x += incr;
-	//	P.push(GsVec(rootXPos, rootYPos, 0.0f));
-	//	P.push(GsVec(x, rootYPos - 0.2f, 0.0f));
-
-	//	// Push new point to orig, save for later
-	//	orig.push(GsVec(x, (rootYPos) - 0.2f, 0.0f));
-
-	//}
-
-
-
-	//// Depth is now 1
-	//depth = 1;
-
-
-	//int startIndex = pow(recursions, depth) - (recursions - 1);
-
-	//while (depth <= searchDepth)
-	//{
-
-	//	//std::cout << "size: " << orig.size() << std::endl;
-
-	//	int endIndex = (startIndex + pow(recursions, depth));
-
-	//	// Boundary shrinks for each depth
-	//	boundary = boundary / recursions;
-	//	incr = boundary / (recursions + 1);
-	//	//std::cout << "incr: " << incr << std::endl;
-
-
-	////	std::cout << "start: " << startIndex << "\tend: " << endIndex << std::endl;
-	//	// Does recursion for each subtree
-
-	//	for (int i = startIndex; i < endIndex; i++)
-	//	{
-
-
-	//		x = orig[i].x - (boundary / 2);
-	//		//std::cout << "x: " << x << std::endl;
-	//		for (int j = 0; j < recursions; j++)
-	//		{
-	//			x += incr;
-	//			GsVec start = orig[i];
-	//			start.y -= 0.08;
-	//			P.push(start);
-	//			P.push(GsVec(x, orig[i].y - 0.2f, 0.0f));
-
-	//			// Push new point to orig, save for later
-	//			orig.push(GsVec(x, orig[i].y - 0.2f, 0.0f));
-	//			//std::cout << "push point: " << i + j + 1 << std::endl;
-	//		}
-	//	}
-
-	//	//std::cout << "size: " << orig.size() << std::endl;
-	//	startIndex = endIndex;
-	//	depth++;
-	//}
-
-	////	for (int i = startIndex; i < endIndex; i++)
-	////	{
-
-
-	////		x = orig[i].x - (boundary / 2);
-	////		//std::cout << "x: " << x << std::endl;
-	////		for (int j = 0; j < recursions; j++)
-	////		{
-	////			x += incr;
-	////			P.push(orig[i]);
-	////			P.push(GsVec(x, orig[i].y - 0.2f, 0.0f));
-
-	////			// Push new point to orig, save for later
-	////			orig.push(GsVec(x, orig[i].y - 0.2f - 0.13f, 0.0f));
-	////			//std::cout << "push point: " << i + j + 1 << std::endl;
-	////		}
-	////	}
-
-	////	//std::cout << "size: " << orig.size() << std::endl;
-	////	startIndex = endIndex;
-	////	depth++;
-	////}
-
-	//C.size(P.size());
-	//C.setall(GsColor::black);
-
-	//int last = pow(recursions, searchDepth + 1) * 2;
-
-	//for (int i = C.size() - last; i < C.size(); i++)
-	//	C.set(i, GsColor::red);
 
 
 
