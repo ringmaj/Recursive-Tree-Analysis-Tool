@@ -51,6 +51,7 @@ AppWindow::AppWindow(const char* label, int x, int y, int w, int h)
 	recursion = 2;
 	vertScroll = false;
 
+
 	
 	// Sample input, has two nodes for the equation
 	recursiveNode input;
@@ -166,9 +167,11 @@ void AppWindow::glutKeyboard(unsigned char key, int x, int y)
 	{
 	// Increase/decrease branch width
 	case 27: exit(1); break;
-	case 'a': _recursiveTree.setBranchWidth(_recursiveTree.getBranchWidth() - 0.1); //std::cout << "Branch Width:  " << _recursiveTree.getBranchWidth() << std::endl;  redraw(); break;
-	case 'q': _recursiveTree.setBranchWidth(_recursiveTree.getBranchWidth() + 0.1); //std::cout << "Branch Width:  " << _recursiveTree.getBranchWidth() << std::endl;  redraw(); break;
+	case 'a': _recursiveTree.setBranchWidth(_recursiveTree.getBranchWidth() - 0.1);  redraw(); break;
+	case 'q': _recursiveTree.setBranchWidth(_recursiveTree.getBranchWidth() + 0.1);  redraw(); break;
 
+	case 'w': _recursiveTree.setBranchHeight(_recursiveTree.getBranchHeight() - 0.1); redraw(); break;
+	case 's': _recursiveTree.setBranchHeight(_recursiveTree.getBranchHeight() + 0.1);  redraw(); break;
 
 	case ' ': _buttonsInput.setVertScrollY(0.0); redraw();  break;
 	}
@@ -369,6 +372,7 @@ void AppWindow::drawMenus()
 	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)output.c_str());
 
 
+
 	glColor3f(0.462f, 0.435f, 0.435f);
 	glRasterPos2f(-0.75,-0.70);
 	 output = "T(n) = ";
@@ -550,12 +554,15 @@ void AppWindow::printTreeText()
 	GsArray<node> nodeArr = _recursiveTree.getNodes();
 
 
+	if( _recursiveTree.getRootYPos() + 0.06 <= 0.88)
+	printbitmap(GLUT_BITMAP_HELVETICA_12, "T(n)", _recursiveTree.getRootXPos() + 0.040f, _recursiveTree.getRootYPos() - 0.08f);
+
 	for (int i = 0; i < nodeArr.size(); i++)
 	{
 
 		string nodeString = "";
 
-		if (nodeArr[i].y <= 0.88)
+		if (nodeArr[i].y <= 0.88 && nodeArr[i].y > -0.5 && nodeArr[i].x > -0.965 && nodeArr[i].x < -0.1)
 		{
 			//nodeString += to_string(nodeArr[i].recursions);
 			nodeString += "T(";
@@ -564,10 +571,10 @@ void AppWindow::printTreeText()
 			nodeString += to_string(nodeArr[i].num2);
 			nodeString += "n)";
 
-			cout << "node: " << nodeString << endl;
+			//cout << "node: " << nodeString << endl;
 
 
-			printbitmap(GLUT_BITMAP_HELVETICA_18, nodeString, nodeArr[i].x + 0.035f, nodeArr[i].y - 0.10f);
+			printbitmap(GLUT_BITMAP_HELVETICA_12, nodeString, nodeArr[i].x + 0.035f, nodeArr[i].y - 0.10f);
 		}
 	}
 
