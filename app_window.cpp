@@ -546,30 +546,55 @@ void AppWindow::drawMenus()
 
 void AppWindow::printTreeText()
 {
-
-	GsArray<GsVec> points = _recursiveTree.getPoints();
-
-	//std::cout << points[0].y << std::endl;
-	if (points[0].y <= 0.81)
-	printbitmap(GLUT_BITMAP_HELVETICA_18,"T(n)", points[0].x + 0.035f, points[0].y -0.08f );
+	// Holds all nodes for each branch
+	GsArray<node> nodeArr = _recursiveTree.getNodes();
 
 
-
-
-
-
-	for (int i = 1; i < points.size(); i++)
+	for (int i = 0; i < nodeArr.size(); i++)
 	{
-		if (points[i].y < 0.75 && points[i].y > -0.5)
+
+		string nodeString = "";
+
+		if (nodeArr[i].y <= 0.88)
 		{
-			////std::cout << "space: " << abs((points[i].x + 0.06) - (points[i+1].x + 0.06)) << std::endl;
-			if( abs((points[i].x + 0.06) - (points[i+1].x + 0.05)) > 0.05)
-			printbitmap(GLUT_BITMAP_HELVETICA_18, "T(x)", points[i].x + 0.06f, points[i].y - 0.12f);
-			else
-				printbitmap(GLUT_BITMAP_HELVETICA_18, ".", points[i].x + 0.06f, points[i].y - 0.06f);
+			//nodeString += to_string(nodeArr[i].recursions);
+			nodeString += "T(";
+			nodeString += to_string(nodeArr[i].num1);
+			nodeString += "/";
+			nodeString += to_string(nodeArr[i].num2);
+			nodeString += "n)";
+
+			cout << "node: " << nodeString << endl;
+
+
+			printbitmap(GLUT_BITMAP_HELVETICA_18, nodeString, nodeArr[i].x + 0.035f, nodeArr[i].y - 0.10f);
 		}
-		
 	}
+
+
+	//GsArray<GsVec> points = _recursiveTree.getPoints();
+
+	////std::cout << points[0].y << std::endl;
+	//if (points[0].y <= 0.81)
+	//printbitmap(GLUT_BITMAP_HELVETICA_18,"T(n)", points[0].x + 0.035f, points[0].y -0.08f );
+
+
+
+
+
+
+	//for (int i = 1; i < points.size(); i++)
+	//{
+	//	if (points[i].y < 0.75 && points[i].y > -0.5)
+	//	{
+	//		////std::cout << "space: " << abs((points[i].x + 0.06) - (points[i+1].x + 0.06)) << std::endl;
+	//		if( abs((points[i].x + 0.06) - (points[i+1].x + 0.05)) > 0.05)
+	//		printbitmap(GLUT_BITMAP_HELVETICA_18, "T(x)", points[i].x + 0.06f, points[i].y - 0.12f);
+	//		else
+	//			printbitmap(GLUT_BITMAP_HELVETICA_18, ".", points[i].x + 0.06f, points[i].y - 0.06f);
+	//	}
+	//	
+	//}
 	
 }
 
@@ -609,7 +634,7 @@ void AppWindow::printEquation()
 
 
 
-		cout << "string:" << nodeString << std::endl;
+	//	cout << "string:" << nodeString << std::endl;
 		
 
 		printbitmap(GLUT_BITMAP_HELVETICA_18, nodeString, x, -0.7f);
