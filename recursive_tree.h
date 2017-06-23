@@ -44,7 +44,9 @@ struct node
 
 	// Number of children this node has, if numChildren = recursions, then node has been fully expanded
 	int numChildren = 0;
-	bool expanded;
+	bool expanded = false;
+
+	float boundary;
 };
 
 
@@ -54,8 +56,9 @@ private:
 	GlShader _vsh, _fsh;
 	GlProgram _prog;
 	GsArray<GsVec>   P; // coordinates
-	GsArray<GsVec>   orig; // saves unaltered coordinates
 	GsArray<GsColor> C; // colors
+	GsArray<node> nodeArray;
+
 	int _numpoints;     // saves the number of points
 
 	int num_recursions;
@@ -63,8 +66,6 @@ private:
 	float rootXPos;
 	float rootYPos;
 	float branchWidth;
-
-	
 
 public:
 	RecursiveTree();
@@ -79,7 +80,7 @@ public:
 	void setRootYPos(float y) { rootYPos = y; }
 	float getBranchWidth() { return branchWidth; }
 	void setBranchWidth(float w) {  branchWidth = w; }
-	GsArray<GsVec> getPoints() { return orig; }
+	GsArray<node> getNodes() { return nodeArray; }
 	
 };
 
